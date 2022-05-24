@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}主页{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+    {% if request.session.is_login %}
+    <h2>你好,{{ request.session.user_name }}！<br>张哥和你说：欢迎回来！<br>快说：谢谢张哥！</h2>
+    {% else %}
+    {% if message %}
+        <!--   退出登录后的一个提示 -->
+    <div class="alert alert-warning">{{ message }}</div>
+    {% endif %}
+    <h2>您尚未登录，<br>只能访问公开内容！</h2>
+    {% endif %}
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
